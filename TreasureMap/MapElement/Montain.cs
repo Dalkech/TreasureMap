@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    internal abstract class MapElement
+    public sealed class Montain() : BaseMapElement('M')
     {
     }
 }

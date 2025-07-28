@@ -27,10 +27,10 @@ namespace UnitTests
             + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n"
             + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n"
             + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n")]
-        void SettingMap(int x, int y, string expected)
+        void SettingMap_Should_Match_Bounds(int width, int heigth, string expected)
         {
             //arrange
-            TreasureMap.Map map = new(x, y);
+            TreasureMap.Map map = new(width, heigth);
             //act
             string mapString = map.ToString();
             //assert
