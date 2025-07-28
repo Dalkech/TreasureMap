@@ -10,14 +10,15 @@ namespace UnitTests
     {
         [Theory]
         [InlineData(3,3,
-@" - - - 
- - - - 
- - - - ")]
+@" - - 
+ - - 
+ - - 
+")]
 
         void SetUpMap_Output_Should_Match(int x, int y, string expected)
         {
             //arrange
-            TreasureMap.Map.Map map = TreasureMap.Map.Map.Create();
+            TreasureMap.Map map = TreasureMap.Map.Create(x, y);
             //act
             string mapString = map.ToString();
             //assert
