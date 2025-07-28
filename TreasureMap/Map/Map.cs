@@ -8,9 +8,8 @@ namespace TreasureMap
 {
     public sealed class Map(int x, int y)
     {
-        const char 
-            MapElementSeparator = '-',
-            MapEmptyElementChar = ' ';
+        const char MapEmptyElementChar = '.';
+        const string MapElementSeparator = "\t\t";
 
         private int x = x;
         private int y = y;

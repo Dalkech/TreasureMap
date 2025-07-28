@@ -9,30 +9,24 @@ namespace UnitTests
     public class MapTests
     {
         [Theory]
-        [InlineData(3,3,
-@" - - 
- - - 
- - - 
-")]
-        [InlineData(1, 3,
-@" 
- 
- 
-")]
-        [InlineData(3, 1,
-@" - - 
-")]
+        [InlineData(3,3, ".\t\t.\t\t.\r\n" 
+                        + ".\t\t.\t\t.\r\n" 
+                        + ".\t\t.\t\t.\r\n")]
+        [InlineData(1, 3, 
+            ".\r\n" 
+            + ".\r\n" 
+            + ".\r\n")]
+        [InlineData(3, 1, 
+            ".\t\t.\t\t.\r\n")]
         [InlineData(5, 3,
-@" - - - - 
- - - - - 
- - - - - 
-")]
+            ".\t\t.\t\t.\t\t.\t\t.\r\n"
+            + ".\t\t.\t\t.\t\t.\t\t.\r\n"
+            + ".\t\t.\t\t.\t\t.\t\t.\r\n")]
         [InlineData(7, 4,
-@" - - - - - - 
- - - - - - - 
- - - - - - - 
- - - - - - - 
-")]
+            ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n"
+            + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n"
+            + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n"
+            + ".\t\t.\t\t.\t\t.\t\t.\t\t.\t\t.\r\n")]
         void SettingMap(int x, int y, string expected)
         {
             //arrange
