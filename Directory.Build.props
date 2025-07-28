@@ -1,0 +1,10 @@
+
+<!-- This Directory.Build.props file needs to apply to all projects and solutions in this repository. It is placed near the top of the repo accordingly.    -->
+<!-- If you use more specific Directory.Build.props files, you need to reference this file from there. You can do it with a statement such as this:         -->
+<!--     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />                                   -->
+<!-- For details see: https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019#use-case-multi-level-merging                  -->
+
+<Project>
+	<Import Project="Solution.props"/>
+	<Import Project="Compiler.props"/>
+</Project>

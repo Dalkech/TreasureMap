@@ -1,0 +1,6 @@
+<Project>
+	<PropertyGroup>
+		<SdkTargetFramework>net9.0</SdkTargetFramework>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+</Project>

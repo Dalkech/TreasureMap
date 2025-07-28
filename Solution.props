@@ -1,0 +1,10 @@
+<Project>
+	<PropertyGroup>
+		<Product>TreasureMap</Product>
+		<Authors>Julien PALLEC</Authors>
+	</PropertyGroup>
+	<!--Solution artifacts to output -->
+	<PropertyGroup>
+		<ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+	</PropertyGroup>
+</Project>
