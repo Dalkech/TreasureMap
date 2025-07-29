@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TreasureMap
+namespace TreasureMap.Command
 {
-    internal interface IDisplayable
+    public abstract class BasePlayerCommand(IPlayer player)
     {
-        public abstract string ToString();
+        protected IPlayer _player = player; 
     }
 }

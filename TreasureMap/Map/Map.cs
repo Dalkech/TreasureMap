@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,14 @@ namespace TreasureMap
 {
     public sealed class Map(int width, int heigth)
     {
-        const char MapEmptyElementChar = '.';
+        public const char MapEmptyElementChar = '.';
         const string MapElementSeparator = "\t\t";
 
-        private int width  = width;
-        private int heigth = heigth;
-        private BaseMapElement[,] map = new BaseMapElement[width, heigth];
-        internal (int x, int y) playerCoordinates = (0, 0);
+        private readonly int width  = width;
+        private readonly int heigth = heigth;
+        
+        private readonly BaseMapElement[,] map = new BaseMapElement[width, heigth];
+        private readonly List<Player> players = [];  
 
         public override string ToString()
         {
@@ -37,5 +39,12 @@ namespace TreasureMap
 
             return stringBuilder.ToString();
         }
+        public BaseMapElement? GetMapElement(int x, int y) => map[x, y];
+        public void PlacePlayer(Player player)
+        { players.Add(player)  ; }
+        public bool PositionIsValid(int x, int y)
+            => ((0 <= x && x < width)
+                && (0 <= y && y < heigth)
+                && (players.FirstOrDefault(p => p.Coordinates == (x, y)) is null));
     }
 }

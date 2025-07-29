@@ -8,5 +8,9 @@ namespace TreasureMap
 {
     public sealed class Montain() : BaseMapElement('M')
     {
+        public override void Interact(Player player)
+        {
+            return;
+        }
     }
 }

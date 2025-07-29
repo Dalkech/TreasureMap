@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    public abstract class BaseMapElement(char mapToken) : IDIsplayable
+    public abstract class BaseMapElement(char mapToken) : IDisplayable
     {
         protected char mapToken = mapToken;
         public override string ToString() {
             return mapToken.ToString();
         }
+        public abstract void Interact(Player player);
     }
 }
