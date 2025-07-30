@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap.Command
 {
-    public sealed class MoveBackwardCommand(Player player) : BasePlayerCommand(player), ICommand
+    public sealed class MoveBackwardCommand(IPlayer player) : BasePlayerCommand(player), ICommand
     {
         public void Execute() => _player.Move(-1);
     }

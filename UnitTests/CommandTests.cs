@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 using TreasureMap.Command;
+using UnitTests.Mockup;
 
 namespace UnitTests
 {
@@ -22,7 +23,7 @@ namespace UnitTests
         public void Turn(Direction direction, char turnSide, Direction expected)
         {
             //arrange
-            Player player = Helpers.GetMockedPlayer(direction, 0,0, new Map(3,3));
+            Player player = Helpers.GetPlayer(direction, 0,0, new Map(3,3));
             ICommand turnCommand = new TurnCommand(player, turnSide);
             
             //act
@@ -44,12 +45,12 @@ namespace UnitTests
         {
             //arrange 
             Map map = new Map(10, 10);
-            Player player = Helpers.GetMockedPlayer(direction, x, y, map);
+            Player player = Helpers.GetPlayer(direction, x, y, map);
             ICommand commandForward = new MoveForwardCommand(player);
 
             //act
             commandForward.Execute();
-            (int x, int y) newCoordinates = player.Coordinates;
+            (int x, int y) newCoordinates = player.GetCoordinates();
 
             //assert
             Assert.Equal((expectedX, expectedY), newCoordinates);
@@ -67,12 +68,12 @@ namespace UnitTests
         {
             //arrange 
             Map map = new Map(10, 10);
-            Player player = Helpers.GetMockedPlayer(direction, x, y, map);
+            Player player = Helpers.GetPlayer(direction, x, y, map);
             ICommand commandBackward = new MoveBackwardCommand(player);
 
             //act
             commandBackward.Execute();
-            (int x, int y) newCoordinates = player.Coordinates;
+            (int x, int y) newCoordinates = player.GetCoordinates();
 
             //assert
             Assert.Equal((expectedX, expectedY), newCoordinates);

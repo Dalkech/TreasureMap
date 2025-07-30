@@ -12,5 +12,6 @@ namespace TreasureMap
         abstract void AddTreasure(int numberOfTreasure);
         abstract void Move(int steps);
         abstract void ChangeOrientation(char turnDirection);
+        abstract (int x, int y) GetCoordinates();
     }
 }

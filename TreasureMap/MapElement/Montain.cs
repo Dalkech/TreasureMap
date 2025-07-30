@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    public sealed class Montain() : BaseMapElement('M')
+    public sealed class Montain(int x, int y) : BaseMapElement('M', x, y)
     {
         public override void Interact(Player player)
         {

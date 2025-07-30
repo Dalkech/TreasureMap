@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    public sealed class Treasure(int numberOfTreasure) : BaseMapElement('T')
+    public sealed class Treasure(int numberOfTreasure, int x, int y) : BaseMapElement('T', x, y)
     {
         private const string displayFormat = "{0}({1})";
         private int numberOfTreasure = numberOfTreasure;
+        public int NumberOfTreasure { get => numberOfTreasure; }
 
         public override void Interact(Player player)
         {

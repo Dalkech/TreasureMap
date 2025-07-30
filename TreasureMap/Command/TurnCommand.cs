@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap.Command
 {
-    public sealed class TurnCommand(Player player, char turnSide) : BasePlayerCommand(player), ICommand
+    public sealed class TurnCommand(IPlayer player, char turnSide) : BasePlayerCommand(player), ICommand
     {
         private char turnAction = turnSide;
         public void Execute()

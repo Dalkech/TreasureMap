@@ -9,20 +9,20 @@ using TreasureMap.Command;
 namespace TreasureMap
 {
     public sealed class Player(string name, int x, int y, 
-        Direction direction, Map map) 
+        Direction direction, IMap map) 
         : IDisplayable, IPlayer
     {
         private const string displayFormat = "({0})";
         
         private readonly string Name = name;
+        private readonly IMap map = map;
+        
         private int numberOfTreasure = 0;
         private (int x, int y) coordinates = (x, y);
         private Direction direction = direction;
-        private Map map = map;
 
-        public (int x, int y) Coordinates { get => this.coordinates; }
+        public (int x, int y) GetCoordinates() => this.coordinates;
         public Direction Direction { get => this.direction; }
-
         public override string ToString()
         {
             return string.Format(displayFormat, Name);
@@ -49,10 +49,10 @@ namespace TreasureMap
 
             var element = map.GetMapElement(newCoordinates.x, newCoordinates.y);
 
-            if (element != null && CanPassBy(element))
+            if (CanPassBy(element)) { 
                 element?.Interact(this);
-
-            coordinates = newCoordinates;
+                coordinates = newCoordinates;
+            }
         }
         public void ChangeOrientation(char turnAction)
         {

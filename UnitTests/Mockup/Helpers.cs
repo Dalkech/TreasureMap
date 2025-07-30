@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 
-namespace UnitTests
+namespace UnitTests.Mockup
 {
     internal class Helpers
     {
-        public static Player GetMockedPlayer(string name)
+        public static Player GetPlayer(string name)
         => new(name, 1, 1, Direction.North, new Map(3, 3));
 
-        public static Player GetMockedPlayer(Direction direction, int x, int y, Map map)
+        public static Player GetPlayer(Direction direction, int x, int y, IMap map)
         => new("toto", x, y, direction, map);
     }
 }

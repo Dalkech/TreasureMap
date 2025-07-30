@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    public sealed class Map(int width, int heigth)
+    public sealed class Map(int width, int heigth) : IMap
     {
         public const char MapEmptyElementChar = '.';
         const string MapElementSeparator = "\t\t";
@@ -16,7 +16,7 @@ namespace TreasureMap
         private readonly int heigth = heigth;
         
         private readonly BaseMapElement[,] map = new BaseMapElement[width, heigth];
-        private readonly List<Player> players = [];  
+        private readonly List<IPlayer> players = [];  
 
         public override string ToString()
         {
@@ -40,11 +40,23 @@ namespace TreasureMap
             return stringBuilder.ToString();
         }
         public BaseMapElement? GetMapElement(int x, int y) => map[x, y];
-        public void PlacePlayer(Player player)
-        { players.Add(player)  ; }
+        public BaseMapElement[,] GetMap() => map;
+        public void PlacePlayers(params IPlayer[] newPlayers)
+        {
+            for (int i = 0; i < newPlayers.Length; i++)
+                this.players.Add(newPlayers[i]);
+        }
+        public void PlaceMapElements(params BaseMapElement[] newElements)
+        {
+            for (int i = 0; i < newElements.Length; i++)
+            {
+                BaseMapElement newElement = newElements[i]; 
+                map[newElement.Coordinates.x,newElement.Coordinates.y] = newElement;
+            }
+        }
         public bool PositionIsValid(int x, int y)
             => ((0 <= x && x < width)
                 && (0 <= y && y < heigth)
-                && (players.FirstOrDefault(p => p.Coordinates == (x, y)) is null));
+                && (players.FirstOrDefault(p => p.GetCoordinates() == (x, y)) is null));
     }
 }
