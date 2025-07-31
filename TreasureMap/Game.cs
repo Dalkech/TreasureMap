@@ -17,7 +17,7 @@ namespace TreasureMap
 
             for (int i = 0; i < maxNumberOfTurn; i++)
                 foreach(var commands in options.PlayerCommandLists)
-                    if(commands.ElementAtOrDefault(i) is ICommand command)
+                    if(commands.ElementAtOrDefault(i) is IPlayerCommand command)
                         command.Execute();
         }
     }

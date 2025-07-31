@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 using TreasureMap.Command;
+using TreasureMap.MapElement;
 using UnitTests.Mockup;
 
 namespace UnitTests

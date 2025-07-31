@@ -1,4 +1,6 @@
-﻿namespace TreasureMap
+﻿using TreasureMap;
+
+namespace TreasureMap
 {
     public interface IMap
     {

@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TreasureMap.Command;
+using TreasureMap;
 
 namespace TreasureMap
 {
@@ -21,17 +22,17 @@ namespace TreasureMap
         private (int x, int y) coordinates = (x, y);
         private Direction direction = direction;
 
-        public (int x, int y) GetCoordinates() => this.coordinates;
-        public Direction Direction { get => this.direction; }
+        public (int x, int y) GetCoordinates() => coordinates;
+        public Direction Direction { get => direction; }
         public override string ToString()
         {
             return string.Format(displayFormat, Name);
         }
         public bool CanPassBy(BaseMapElement element)
-            => (element is not Montain or null);
+            => element is not Montain or null;
         public void AddTreasure(int v)
         {
-            this.numberOfTreasure++;
+            numberOfTreasure++;
         }
         public void Move(int v)
         {
@@ -49,10 +50,13 @@ namespace TreasureMap
 
             var element = map.GetMapElement(newCoordinates.x, newCoordinates.y);
 
-            if (CanPassBy(element)) { 
+            #pragma warning disable CS8604 
+            if (CanPassBy(element)) {
+                // null case managed.
                 element?.Interact(this);
                 coordinates = newCoordinates;
             }
+            #pragma warning restore CS8604
         }
         public void ChangeOrientation(char turnAction)
         {
@@ -67,7 +71,7 @@ namespace TreasureMap
         private void TurnRight()
         {
             direction =
-                this.direction switch
+                direction switch
                 {
                     Direction.North => Direction.East,
                     Direction.East => Direction.South,

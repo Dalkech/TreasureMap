@@ -1,10 +1,11 @@
 ﻿using TreasureMap.Command;
+using TreasureMap;
 
 namespace TreasureMap
 {
     public record GameOptions
     {
-        public required IReadOnlyList<IReadOnlyList<BasePlayerCommand>> PlayerCommandLists { get; set; }
+        public required IReadOnlyList<IReadOnlyList<IPlayerCommand>> PlayerCommandLists { get; set; }
     }
 
     public record GameData

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreasureMap.Command
 {
-    public interface ICommand
+    public interface IPlayerCommand
     {
         void Execute();
     }

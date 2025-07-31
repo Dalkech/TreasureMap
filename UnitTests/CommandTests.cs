@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 using TreasureMap.Command;
+using TreasureMap.Player;
 using UnitTests.Mockup;
 
 namespace UnitTests
@@ -24,7 +25,7 @@ namespace UnitTests
         {
             //arrange
             Player player = Helpers.GetPlayer(direction, 0,0, new Map(3,3));
-            ICommand turnCommand = new TurnCommand(player, turnSide);
+            IPlayerCommand turnCommand = new TurnCommand(player, turnSide);
             
             //act
             turnCommand.Execute();
@@ -46,7 +47,7 @@ namespace UnitTests
             //arrange 
             Map map = new Map(10, 10);
             Player player = Helpers.GetPlayer(direction, x, y, map);
-            ICommand commandForward = new MoveForwardCommand(player);
+            IPlayerCommand commandForward = new MoveForwardCommand(player);
 
             //act
             commandForward.Execute();
@@ -69,7 +70,7 @@ namespace UnitTests
             //arrange 
             Map map = new Map(10, 10);
             Player player = Helpers.GetPlayer(direction, x, y, map);
-            ICommand commandBackward = new MoveBackwardCommand(player);
+            IPlayerCommand commandBackward = new MoveBackwardCommand(player);
 
             //act
             commandBackward.Execute();

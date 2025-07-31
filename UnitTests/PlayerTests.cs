@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 using TreasureMap.Command;
+using TreasureMap.MapElement;
+using TreasureMap.Player;
 using UnitTests.Mockup;
 
 namespace UnitTests
@@ -33,7 +35,7 @@ namespace UnitTests
             map.PlaceMapElements(new Montain(1, 0));
             Player player = Helpers.GetPlayer(Direction.North, 1, 1, map);
             //act
-            ICommand moveForward = new MoveForwardCommand(player);
+            IPlayerCommand moveForward = new MoveForwardCommand(player);
             moveForward.Execute();
             //assert
             Assert.Equal((1, 1), player.GetCoordinates());
@@ -48,7 +50,7 @@ namespace UnitTests
             Player obstaclePlayer = Helpers.GetPlayer(Direction.North, 1, 0, map);
             map.PlacePlayers(obstaclePlayer);
             //act
-            ICommand moveForward = new MoveForwardCommand(player);
+            IPlayerCommand moveForward = new MoveForwardCommand(player);
             moveForward.Execute();
             //assert
             Assert.Equal( (1,1), player.GetCoordinates());
@@ -63,7 +65,7 @@ namespace UnitTests
             map.PlaceMapElements(treasure);
             Player player = Helpers.GetPlayer(Direction.North, 1, 1, map);
             //act
-            ICommand moveForward = new MoveForwardCommand(player);
+            IPlayerCommand moveForward = new MoveForwardCommand(player);
             moveForward.Execute();
             //assert
             Assert.Equal((0, 1), player.GetCoordinates());

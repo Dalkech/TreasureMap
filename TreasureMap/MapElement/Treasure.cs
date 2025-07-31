@@ -12,7 +12,7 @@ namespace TreasureMap
         private int numberOfTreasure = numberOfTreasure;
         public int NumberOfTreasure { get => numberOfTreasure; }
 
-        public override void Interact(Player player)
+        public override void Interact(IPlayer player)
         {
             if (numberOfTreasure == 0)
                 return;

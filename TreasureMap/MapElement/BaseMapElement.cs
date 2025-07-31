@@ -15,6 +15,6 @@ namespace TreasureMap
         public override string ToString() {
             return mapToken.ToString();
         }
-        public abstract void Interact(Player player);
+        public abstract void Interact(IPlayer player);
     }
 }
