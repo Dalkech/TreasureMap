@@ -8,7 +8,7 @@ namespace Application.LineData
 {
     public record BaseLineData(int x, int y)
     {
-        protected int x; 
-        protected int y;
+        protected int x = x; 
+        protected int y = y;
     }
 }

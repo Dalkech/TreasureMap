@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
 using TreasureMap.Command;
-using TreasureMap.MapElement;
-using TreasureMap.Player;
 using UnitTests.Mockup;
 
 namespace UnitTests
@@ -14,21 +12,8 @@ namespace UnitTests
     public class PlayerTests
     {
 
-        [Theory]
-        [InlineData("Jean", "(Jean)")]
-        [InlineData("Josiane", "(Josiane)")]
-        [InlineData("Toto", "(Toto)")]
-        public void Player_Should_Be_Displayed_With_The_Right_Name(string name, string expected)
-        {
-            Player player = Helpers.GetPlayer(name);
-            
-            string playerString = player.ToString();
-            
-            Assert.Equal(expected, playerString);
-        }
-
         [Fact]
-        public void Should_Not_Pass_On_Montain()
+        public void ShouldNotPassOnMontain()
         {
             //arrange
             IMap map = new Map(3, 3);
@@ -42,7 +27,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Should_Not_Pass_On_OtherPlayer()
+        public void ShouldNotPassOnOtherPlayer()
         {
             //arrange
             IMap map = new Map(3, 3);
@@ -57,22 +42,23 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Should_Pass_On_Treasure()
+        public void ShouldPassOnTreasure()
         {
             //arrange
             IMap map = new Map(3, 3);
             Treasure treasure = new Treasure(1, 1, 0);
             map.PlaceMapElements(treasure);
             Player player = Helpers.GetPlayer(Direction.North, 1, 1, map);
+            (int x, int y) expectedPosition = (1, 0);
             //act
             IPlayerCommand moveForward = new MoveForwardCommand(player);
             moveForward.Execute();
             //assert
-            Assert.Equal((0, 1), player.GetCoordinates());
+            Assert.Equal(expectedPosition, player.GetCoordinates());
         }
 
         [Fact]
-        public void Should_Pass_On_Terrain()
+        public void ShouldPassOnTerrain()
         {
             Player player = Helpers.GetPlayer("toto");
 

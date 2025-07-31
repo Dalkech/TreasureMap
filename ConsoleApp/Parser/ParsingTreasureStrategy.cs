@@ -11,19 +11,16 @@ namespace ConsoleApp.Parser
 {
     internal class ParsingTreasureStrategy(LineParser parser) : BaseParsingLineStrategy(parser), IParsingLineStrategy
     {
-        string pattern = @"^P\s*-\s*(?<name>\w+)\s*-\s*(?<x>\d+)\s*-\s*(?<y>\d+)\s*-\s*(?<direction>[NSOE])\s*-\s*(?<command>[ARGD]+)$";
-
+        private const string pattern = @"^T\s*-\s*(?<x>\d+)\s*-\s*(?<y>\d+)\s*-\s*(?<value>\d+)\s*$";
         public void Execute(string input)
         {
             Match match = ParseLine(input, pattern);
 
-            this._parser.PlayerLines.Add(
-                new PlayerLineData(
-                    match.Groups["name"].Value,
-                    match.Groups["direction"].Value[0],
+            this._parser.TreasureLines.Add(
+                new TreasureLineData(
+                    int.Parse(match.Groups["value"].Value),
                     int.Parse(match.Groups["x"].Value),
-                    int.Parse(match.Groups["y"].Value),
-                    match.Groups["command"].Value
+                    int.Parse(match.Groups["y"].Value)
                 ));
         }
     }

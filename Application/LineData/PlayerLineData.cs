@@ -14,7 +14,7 @@ namespace Application.LineData
         public char Direction = direction;
         private readonly string commandString = commandString;
 
-        public IPlayer ToPlayer(IMap map) 
+        public Player ToPlayer(IMap map) 
         {
             Direction direction =
                 this.Direction switch
@@ -43,7 +43,7 @@ namespace Application.LineData
 
         public IReadOnlyList<IPlayerCommand> GetCommands(IPlayer player)
         {
-            IReadOnlyList<IPlayerCommand> commands = [];
+            List<IPlayerCommand> commands = [];
             for (int i = 0; i < this.commandString.Length; i++)
             {
                 IPlayerCommand command =
@@ -54,6 +54,7 @@ namespace Application.LineData
                         'D' => new TurnCommand(player, 'D'),
                         'G' => new TurnCommand(player, 'G')
                     };
+                commands.Add(command);
             }
             return commands;
         }

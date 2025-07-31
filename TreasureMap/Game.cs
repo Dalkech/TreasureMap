@@ -14,7 +14,6 @@ namespace TreasureMap
         public void Play()
         {
             int maxNumberOfTurn = options.PlayerCommandLists.Max(commands => commands.Count);
-
             for (int i = 0; i < maxNumberOfTurn; i++)
                 foreach(var commands in options.PlayerCommandLists)
                     if(commands.ElementAtOrDefault(i) is IPlayerCommand command)

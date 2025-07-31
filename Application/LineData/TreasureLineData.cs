@@ -7,7 +7,7 @@ using TreasureMap;
 
 namespace Application.LineData
 {
-    public record TreasureLineData(int numberOfTreasure, int x, int y): BaseLineData( x, y)
+    public record TreasureLineData(int numberOfTreasure, int x, int y): BaseLineData(x, y)
     {
         public int NumberOfTreasure = numberOfTreasure;
 

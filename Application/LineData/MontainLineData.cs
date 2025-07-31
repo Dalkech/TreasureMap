@@ -15,8 +15,9 @@ namespace Application.LineData
         internal static Montain[] ToMapElements(IReadOnlyList<MontainLineData> models)
         {
             List<Montain> results = [];
-            foreach (var model in models)
+            foreach (MontainLineData model in models)
                 results.Add(model.ToMontain());
+            
             return [.. results];
         }
     }

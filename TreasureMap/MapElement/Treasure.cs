@@ -26,7 +26,7 @@ namespace TreasureMap
             if (numberOfTreasure == 0)
                 return Map.MapEmptyElementChar.ToString();
 
-            return string.Format(displayFormat, mapToken, numberOfTreasure);
+            return string.Format(displayFormat, Token, numberOfTreasure);
         }
     }
 }

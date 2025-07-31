@@ -23,7 +23,7 @@ namespace UnitTests
             map.PlacePlayers(player);
 
             //act
-            IReadOnlyList<BasePlayerCommand> playerCommands =
+            IReadOnlyList<IPlayerCommand> playerCommands =
             [
                 new MoveForwardCommand(player), //2,2
                 new TurnCommand(player, 'D'), //EAST

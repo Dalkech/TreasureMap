@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TreasureMap;
-using TreasureMap.Player;
 
 namespace UnitTests.Mockup
 {

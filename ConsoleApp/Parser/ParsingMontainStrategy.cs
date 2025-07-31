@@ -12,7 +12,7 @@ namespace ConsoleApp.Parser
     internal class ParsingMontainStrategy(LineParser parser) : BaseParsingLineStrategy(parser), IParsingLineStrategy
     {
         private const string 
-            pattern = @"^T\s*-\s*(?<x>\d+)\s*-\s*(?<y>\d+)$",
+            pattern = @"^M\s*-\s*(?<x>\d+)\s*-\s*(?<y>\d+)\s*$",
             xKey = "x",
             yKey = "y";
 

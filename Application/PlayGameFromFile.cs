@@ -9,8 +9,6 @@ using TreasureMap.Command;
 
 namespace Application
 {
-
-
     public class PlayGameFromFile : IUseCase<PlayGameFromFileRequest, PlayGameFromFileResponse>
     {
         public PlayGameFromFileResponse Handle(PlayGameFromFileRequest request)
@@ -19,11 +17,12 @@ namespace Application
             map.PlaceMapElements(MontainLineData.ToMapElements(request.MontainLines));
             map.PlaceMapElements(TreasureLineData.ToMapElements(request.TreasureLines));
 
-            List<IPlayer> players = [];
+            // set commands and player
+            List<Player> players = [];
             List<IReadOnlyList<IPlayerCommand>> playerCommands = [];
             foreach(PlayerLineData playerLine in request.playerLines)
             {
-                IPlayer player = playerLine.ToPlayer(map);
+                Player player = playerLine.ToPlayer(map);
                 players.Add(player);
                 IReadOnlyList<IPlayerCommand> playerCommand = playerLine.GetCommands(player);
                 playerCommands.Add(playerCommand);
@@ -38,7 +37,10 @@ namespace Application
 
             return new PlayGameFromFileResponse
             {
-
+                MapHeight = request.MapLine.Height,
+                MapWidth = request.MapLine.Width,
+                MapElements = MapElementDto.ToMapElements(map),
+                Scores = PlayerScore.ToPlayerScores(players)
             }; 
         }
     }

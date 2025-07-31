@@ -5,7 +5,7 @@ namespace TreasureMap
 {
     public record GameOptions
     {
-        public required IReadOnlyList<IReadOnlyList<IPlayerCommand>> PlayerCommandLists { get; set; }
+        public required IReadOnlyList<IReadOnlyList<IPlayerCommand>> PlayerCommandLists { get; init; }
     }
 
     public record GameData

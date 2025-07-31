@@ -11,23 +11,19 @@ namespace TreasureMap
 {
     public sealed class Player(string name, int x, int y, 
         Direction direction, IMap map) 
-        : IDisplayable, IPlayer
+        : IPlayer
     {
         private const string displayFormat = "({0})";
         
-        private readonly string Name = name;
         private readonly IMap map = map;
-        
         private int numberOfTreasure = 0;
         private (int x, int y) coordinates = (x, y);
         private Direction direction = direction;
 
+        public readonly string Name = name;
+        public int GetNumberOfTreasure() => this.numberOfTreasure;
         public (int x, int y) GetCoordinates() => coordinates;
         public Direction Direction { get => direction; }
-        public override string ToString()
-        {
-            return string.Format(displayFormat, Name);
-        }
         public bool CanPassBy(BaseMapElement element)
             => element is not Montain or null;
         public void AddTreasure(int v)

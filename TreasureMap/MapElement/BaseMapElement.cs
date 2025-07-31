@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace TreasureMap
 {
-    public abstract class BaseMapElement(char mapToken, int x, int y) : IDisplayable
+    public abstract class BaseMapElement(char token, int x, int y)
     {
-        protected char mapToken = mapToken;
-        private (int x, int y) coordinates = (x, y);
-        public (int x, int y) Coordinates { get => coordinates; } 
-
-        public override string ToString() {
-            return mapToken.ToString();
-        }
+        public readonly char Token = token;
+        public readonly (int x, int y) Coordinates = (x, y);
         public abstract void Interact(IPlayer player);
     }
 }

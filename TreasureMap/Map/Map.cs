@@ -42,6 +42,8 @@ namespace TreasureMap
         }
         public BaseMapElement? GetMapElement(int x, int y) => map[x, y];
         public BaseMapElement[,] GetMap() => map;
+        public int GetWidth() => width;
+        public int GetHeight() => heigth;
         public void PlacePlayers(params IPlayer[] newPlayers)
         {
             for (int i = 0; i < newPlayers.Length; i++)

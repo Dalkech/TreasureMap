@@ -11,7 +11,7 @@ namespace ConsoleApp.Parser
 {
     internal class ParsingMapStrategy(LineParser parser) : BaseParsingLineStrategy(parser), IParsingLineStrategy
     {
-        private const string pattern = @"^C\s*-\s*(?<largeur>\d+)\s*-\s*(?<hauteur>\d+)$",
+        private const string pattern = @"^C\s*-\s*(?<largeur>\d+)\s*-\s*(?<hauteur>\d+)\s*$",
             widthKey = "largeur",
             heigthKey = "hauteur";
 
